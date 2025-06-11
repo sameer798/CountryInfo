@@ -79,6 +79,12 @@ main {
     margin-block: 6px;
 }
 
+.error {
+    text-align: center;
+    font-size: larger;
+    color: red;
+}
+
 @media(max-width: 670px) {
     .country-container {
        align-items: center;
@@ -91,5 +97,16 @@ main {
 
     .header h2 {
         font-size: 18px;
+    }
+}
+
+@media(max-width: 420px){
+    .country-container {
+       align-items: center;
+    justify-content: center;
+    }
+
+     .country-card {
+       width: 350px;
     }
 }

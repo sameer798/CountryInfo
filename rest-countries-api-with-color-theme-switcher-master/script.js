@@ -1,17 +1,19 @@
 const countryContainer = document.querySelector('.country-container');
+const error = document.querySelector('.error')
 fetch('https://restcountries.com/v3.1/all').then((data)=> data.json())
 .then((country)=>{
     //  https://restcountries.com/v3.1/name/{name}
 
-    console.log(country[0])
+    // console.log(country[0])
     country.forEach((country)=>{
      const a = document.createElement('a');
 
      a.href = `./country.html?name=${country.name.common}`
+     
         const newHTML = `        
         
                 <div class="country-card">
-                <img src=${country.flags.svg} alt="flag">
+                <img src=${country.flags.svg} alt="${country.name.common} flag">
                 <div class="card-text">
                     <h3 class="country-title">${country.name.common}</h3>
                 <p><b>Population: </b>${country.population.toLocaleString()}</p>
@@ -25,4 +27,15 @@ fetch('https://restcountries.com/v3.1/all').then((data)=> data.json())
         countryContainer.append(a)
     })
 
+})
+.catch((err)=>{
+    const p = document.createElement('p');
+    const p1 = document.createElement('p');
+    p1.innerText = 'Try after some time...'
+    p1.style.color = 'black'
+    p.innerText = err.message
+    error.append(p)
+    error.append(p1)
+
+console.log(p)
 })
